@@ -1,0 +1,98 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;
+    2 00000000         ; Faculty of Engineering & Environment
+    3 00000000         ; CM0506 - Small Embedded Systems
+    4 00000000         ; Assignment 2 of 2 - Asteroids
+    5 00000000         ;
+    6 00000000         ; Authors
+    7 00000000         ; Alain Dobeli / W15039869
+    8 00000000         ; Tom Batchelor / W15042283
+    9 00000000         ; 
+   10 00000000         ; Version
+   11 00000000         ; 08.03.2017
+   12 00000000         ;
+   13 00000000         ;
+   14 00000000         ;
+   15 00000000         ; Asteroids Bit Flip Function
+   16 00000000         ;
+   17 00000000         ; bitflip.s
+   18 00000000         ; This file contains assembly code for flipping image bi
+                       t patterns.
+   19 00000000         ;
+   20 00000000                 PRESERVE8                    ; preserve eight-by
+                                                            te alignment of the
+                                                             stack
+   21 00000000         ;
+   22 00000000                 THUMB                        ;
+   23 00000000                 AREA             |.text|, CODE, READONLY ;
+   24 00000000                 EXPORT           bitflip     ;
+   25 00000000         ;
+   26 00000000                 ENTRY                        ; entry point of th
+                                                            e program
+   27 00000000         bitflip FUNCTION                     ;
+   28 00000000 B506            PUSH             {R1, R2, LR} ; save working reg
+                                                            isters onto a stack
+                                                            
+   29 00000002 4602            MOV              R2, R0      ; move value from r
+                                                            egister 2 to regist
+                                                            er 0
+   30 00000004 FA92 F1A2       RBIT             R1, R2      ; reverse the bit o
+                                                            rder (in a 32-bit w
+                                                            ord)
+   31 00000008 EA4F 6011       LSR              R0, R1, #24 ; "24" because it i
+                                                            s the closest multi
+                                                            ple of 8 (when mult
+                                                            iplied by 8 = 192) 
+                                                            to the actual comma
+                                                            -separated list of 
+                                                            200 byte values fro
+                                                            m the asteroid imag
+                                                            e
+   32 0000000C E8BD 4006       POP              {R1, R2, LR} ; restore saved re
+                                                            gisters from a stac
+                                                            k
+   33 00000010 4770            BX               LR          ; return value
+   34 00000012                 ENDFUNC                      ;
+   35 00000012                 END                          ; end of the progra
+                                                            m
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\bitflip.d -o.\objects\bitflip.o -I"\vmware-host\Share
+d Folders\VM Shared\assignment-2-asteroids-Alain-CH-master\asteroids\RTE" -IC:\
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+Keil_v5\ARM\PACK\Keil\LPC4000_DFP\2.0.0\Device\Include -IC:\Keil_v5\ARM\CMSIS\I
+nclude --predefine="__UVISION_VERSION SETA 521" --predefine="CORE_M4 SETA 1" --
+list=.\listings\bitflip.lst src\bitflip.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 23 in file src\bitflip.s
+   Uses
+      None
+Comment: .text unused
+bitflip 00000000
+
+Symbol: bitflip
+   Definitions
+      At line 27 in file src\bitflip.s
+   Uses
+      At line 24 in file src\bitflip.s
+Comment: bitflip used once
+2 symbols
+335 symbols in table

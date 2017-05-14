@@ -1,0 +1,64 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 PRESERVE8                    ; preserve eight-by
+                                                            te alignment of the
+                                                             stack
+    2 00000000         ;
+    3 00000000                 THUMB                        ;
+    4 00000000                 AREA             |.text|, CODE, READONLY ;
+    5 00000000                 EXPORT           bitflip     ;
+    6 00000000         ;
+    7 00000000                 ENTRY                        ; entry point of th
+                                                            e program
+    8 00000000         bitflip FUNCTION                     ;
+    9 00000000 B506            PUSH             {R1, R2, LR} ; save working reg
+                                                            isters onto a stack
+                                                            
+   10 00000002 4602            MOV              R2, R0      ; move value from r
+                                                            egister 2 to regist
+                                                            er 0
+   11 00000004 FA92 F1A2       RBIT             R1, R2      ; reverse the bit o
+                                                            rder (in a 32-bit w
+                                                            ord)
+   12 00000008 EA4F 6011       LSR              R0, R1, #24 ; 
+   13 0000000C E8BD 4006       POP              {R1, R2, LR} ; restore saved re
+                                                            gisters from a stac
+                                                            k
+   14 00000010 4770            BX               LR          ; return value
+   15 00000012                 ENDFUNC                      ;
+   16 00000012                 END                          ; end of the progra
+                                                            m
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\flipbits.d -o.\objects\flipbits.o -I"\vmware-host\Sha
+red Folders\VM Shared\assignment-2-asteroids-Alain-CH-master\asteroids\RTE" -IC
+:\Keil_v5\ARM\PACK\Keil\LPC4000_DFP\2.0.0\Device\Include -IC:\Keil_v5\ARM\CMSIS
+\Include --predefine="__UVISION_VERSION SETA 521" --predefine="CORE_M4 SETA 1" 
+--list=.\listings\flipbits.lst src\flipbits.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 4 in file src\flipbits.s
+   Uses
+      None
+Comment: .text unused
+bitflip 00000000
+
+Symbol: bitflip
+   Definitions
+      At line 8 in file src\flipbits.s
+   Uses
+      At line 5 in file src\flipbits.s
+Comment: bitflip used once
+2 symbols
+335 symbols in table
