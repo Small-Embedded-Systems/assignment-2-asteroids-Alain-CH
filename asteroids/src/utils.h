@@ -14,7 +14,7 @@ typedef uint16_t colour_t;
         For lists of R G B values you might want to use
     I'm using a macro here as the compiler might well convert it into a constant at compile time
 */
-#define rgb(r,g,b) ((uint16_t)(31 * r /255)<<11 | (uint16_t)(63 * g /255)<<5 | (uint16_t)(31 * b /255))
+#define rgb(r, g, b) ((uint16_t)(31 * r / 255) << 11 | (uint16_t)(63 * g / 255) << 5 | (uint16_t)(31 * b / 255))
 
 int randrange(int from, int to);
 

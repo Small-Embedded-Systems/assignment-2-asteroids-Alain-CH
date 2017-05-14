@@ -6,17 +6,17 @@
 #include "model.h"
 
 /* some numerical helper functions */
-float norm(float value, float min, float max) 
+float norm(float value, float min, float max)
 {
-    return (value-min)/(max-min); 
+    return (value - min) / (max - min);
 }
-float lerp(float min, float max, float value) 
+float lerp(float min, float max, float value)
 {
-    return max*value+(1.0f-value)*min; 
+    return max * value + (1.0f - value) * min;
 }
-float map(float value, float lower, float upper, float min, float max) 
+float map(float value, float lower, float upper, float min, float max)
 {
-    return lerp(min,max, norm(value,lower,upper)); 
+    return lerp(min, max, norm(value, lower, upper));
 }
 /*------*/
 
@@ -25,11 +25,10 @@ float map(float value, float lower, float upper, float min, float max)
 */
 int randrange(int from, int to)
 {
-    int range = to-from;
-    return from + rand()%range;
+    int range = to - from;
+    return from + rand() % range;
 }
 
-/* Convery degrees to radians */
+/* Convert degrees to radians */
 const float pi = 3.1415926f;
-float radians(float degrees) { return degrees/180*pi; }
-
+float radians(float degrees) { return pi * (degrees / 180); }
